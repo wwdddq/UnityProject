@@ -1,6 +1,7 @@
 # Misshapen Space
 
 ## Original work link
+As the Unity files are too large to upload to GitHub, we use Google Drive instead, please click on the link below to visit the original work.
 https://drive.google.com/drive/folders/1goo6oy6cj3WwYuU3fMs6RjEmRKE3CdEC?usp=sharing
 
 ## Background
