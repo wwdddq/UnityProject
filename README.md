@@ -17,14 +17,16 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 - Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device. (Not implemented yet)
 
 ## What I did
-### Modelling
+### Modelling in Cinema4D
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/%E6%88%AA%E5%B1%8F2023-06-12%2001.38.11.png)
+
+### Unity-Build, lighting, particle systems, animation
 
 ### Unity-UI
 
 ### Unity-Sound
 
-### Unity-Build, lighting, particle systems, animation
+
 
 ### Arduino-Energy stone devices
 Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device.
@@ -66,8 +68,8 @@ void loop() {
 }
 ```
 
-![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ringmap.png)
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ring.png)
+![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ringmap.png)
 ```ruby
 #include "FastLED.h"
 #define NUM_LEDS 12
@@ -104,3 +106,39 @@ void loop() {
   delay(100); 
 }
 ```
+I wanted to make the LEDs light up when each level of the game was passed. I tried adding a script to the interface of each level of win to make unity communicate with Arduino, but in the end it didn't work.
+```ruby
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO.Ports;
+
+public class WinObject : MonoBehaviour
+{
+    SerialPort serialPort;
+
+    void Start()
+    {
+        // Create serial port object, COM4 is the serial port number, 9600 is the baud rate
+        serialPort = new SerialPort("COM4", 9600);
+        // Open the serial port
+        serialPort.Open();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Sending signals to the serial port
+            serialPort.Write("1");
+            Debug.Log("传输串口信号");
+        }
+    }
+
+    void OnDestroy()
+    {
+        // Close the serial port
+        serialPort.Close();
+    }
+    ```
+}
