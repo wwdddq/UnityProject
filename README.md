@@ -311,4 +311,7 @@ public class WinObject : MonoBehaviour
 ## Conclusion and Reflection
 I have learnt the basics of how to make games using Unity, but I think I am still lacking in scripting and overall game logic, so I will continue to learn more about this later. In terms of Arduino, it was a big regret that the device I wanted to make didn't work out in the end, and I would like to try again later on.
 
-## 
+## References
+https://answers.unity.com/questions/1902989/using-sound-with-the-3rd-person-starter-asset.html
+https://www.bilibili.com/video/BV1uY4y1z73F/?spm_id_from=333.880.my_history.page.click&vd_source=4bf35e742c5f58014845d002599fdab0
+https://learn.unity.com/tutorial/yin-pin-8?uv=2020.3&projectId=5dfa9a5dedbc2a26d1077ca8
