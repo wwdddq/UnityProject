@@ -10,7 +10,7 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 
 ## Design & Development
 ### Game flow
-![Image Alt Text](image/截屏2023-06-12 01.38.11.png)
+![UnityProject](image/截屏2023-06-12 01.38.11.png)
 
 ### Interactive approach
 - Using an Arduino to create a custom physics button, the player needs to press the button to control the main character's movement during the game. Once the game starts, the player must remember the route and press the button when needed to indicate the direction of the main character's movement. (Implemented)
