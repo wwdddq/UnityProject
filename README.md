@@ -27,3 +27,6 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 ### Unity-Build, lighting, particle systems, animation
 
 ### Arduino-Energy stone devices
+Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device.
+![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ledmap.png)
+![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ringmap.png)
