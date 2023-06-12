@@ -26,11 +26,165 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 ### Unity-Build, lighting, particle systems, animation
 
 ### Unity-UI
+```ruby
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class StartUi : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void LoadScen(int value) {
+
+        SceneManager.LoadScene(value);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+}
+
+// In this script, the LoadScene() method is used to load the scene. Depending on the value passed in, the corresponding scene is loaded.
+
+// The QuitGame() method is used to exit the game, calling the Application.Quit() method to close the application.
+```
 
 ### Unity-Sound
+```ruby
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using ToolManager;
+public class Sound : Singleton<Sound> {
+
+  public   AudioSource m_Bg; // AudioSource component for background music
+    public AudioSource m_effect; // AudioSource component for sound effects
+    public string ResourcesDir = ""; // Path to the audio resource
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        DontDestroyOnLoad(this.gameObject); // The game object is not destroyed when the scene is switched
+        m_Bg = gameObject.AddComponent<AudioSource>();
+        m_Bg.playOnAwake = false;
+        m_Bg.loop = true;
+        
+        m_effect = gameObject.AddComponent<AudioSource>();
+
+       PlayBG("每个人都是白痴");
+    }
+
+    // Play background music
+    public void PlayBG(string audioName) {
+        string oldName;
+        if (m_Bg.clip == null)
+        {
+            oldName = "";
+        }
+        else {
+            oldName = m_Bg.clip.name;
+        }
+
+        if (oldName != audioName) {
+            //loading clip
+            string path = ResourcesDir + "/" + audioName;
+
+            AudioClip clip = Resources.Load<AudioClip>(path);
+
+            //play
+            if (clip != null) {
+                m_Bg.clip = clip;
+                m_Bg.Play();
+            }
+        }
+    }
+
+    //sound effect
+    public void PlayEffect(string audioName) {
+
+        string path = ResourcesDir + "/" + audioName;
+
+        AudioClip clip = Resources.Load<AudioClip>(path);
+
+        //play
+        m_effect.PlayOneShot(clip);
+    }
 
 
+}
 
+// This is an audio management that implements the singleton pattern by inheriting from the Singleton<Sound> class.
+
+// This script implements the singleton pattern by inheriting from the Singleton<Sound> class, ensuring that there is only one instance of Sound in the scene.
+
+// In the Awake() method, the AudioSource component for the background music and the AudioSource component for the sound effects are set and the current game object is retained when the scene is switched. PlayBG("E
+```
+Setting management
+```ruby
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+// Volume adjustment for background music and sound effects and loading scenes
+
+public class SettingManager : MonoBehaviour
+{
+
+    public Slider bgSlider; // Slider for background music volume adjustment
+    public Slider effctSlider; // Slider for volume adjustment of sound effects
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (Sound.Instance) {
+            bgSlider.value = Sound.Instance.m_Bg.volume;  // Set the value of the background music slider to the current background music volume
+            effctSlider.value = Sound.Instance.m_effect.volume; // Set the value of the sound slider to the current sound volume
+        }
+      
+    }
+
+
+    public void ChangedBg()
+    {
+        Sound.Instance.m_Bg.volume = bgSlider.value; // Adjust the background music volume according to the value of the background music slider
+    }
+
+    public void loadGame(int value)
+    {
+
+        SceneManager.LoadScene(value); // Loading scenes
+    }
+
+    public void ChangedEffct()
+    {
+        Sound.Instance.m_effect.volume = effctSlider.value; // Adjust the sound volume according to the value of the sound slider
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+  
 ### Arduino-Energy stone devices
 Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device.
 
