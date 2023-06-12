@@ -14,7 +14,16 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 
 ### Interactive approach
 - Using an Arduino to create a custom physics button, the player needs to press the button to control the main character's movement during the game. Once the game starts, the player must remember the route and press the button when needed to indicate the direction of the main character's movement. (Implemented)
-- Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device. (Not implemented)
+- Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device. (Not implemented yet)
 
+## What I did
 ### Modelling
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/%E6%88%AA%E5%B1%8F2023-06-12%2001.38.11.png)
+
+### Unity-UI
+
+### Unity-Sound
+
+### Unity-Build, lighting, particle systems, animation
+
+### Arduino-Energy stone devices
