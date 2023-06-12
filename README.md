@@ -28,5 +28,79 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 
 ### Arduino-Energy stone devices
 Use the Arduino to create a physical energy stone interactive device that lights up with LED lights under the energy stone pieces when the player passes the level. The player collects all the energy stone pieces to light up the physical energy stone device.
+
+![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/led.png)
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ledmap.png)
+```ruby
+// Defining the bulb pins
+const int bulb1Pin = 13;
+const int bulb2Pin = 12;
+const int bulb3Pin = 11;
+const int bulb4Pin = 10;
+
+void setup() {
+  // Set the lamp pin to output mode
+  pinMode(bulb1Pin, OUTPUT);
+  pinMode(bulb2Pin, OUTPUT);
+  pinMode(bulb3Pin, OUTPUT);
+  pinMode(bulb4Pin, OUTPUT);
+}
+
+void loop() {
+  // Listen for signals from the Unity game here and perform the appropriate actions
+
+  // Example: Receiving signals via serial communication
+  if (Serial.available()) {
+    char signal = Serial.read();
+    // Control the corresponding light bulb according to the signal
+    if (signal == '1') {
+      digitalWrite(bulb1Pin, HIGH);  
+    } else if (signal == '2') {
+      digitalWrite(bulb2Pin, HIGH); 
+    } else if (signal == '3') {
+      digitalWrite(bulb3Pin, HIGH); 
+    } else if (signal == '4') {
+      digitalWrite(bulb4Pin, HIGH); 
+    }
+  }
+}
+```
+
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ringmap.png)
+![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ring.png)
+```ruby
+#include "FastLED.h"
+#define NUM_LEDS 12
+#define DATA_PIN 5
+#define LED_TYPE WS2812
+#define COLOR_ORDER GRB
+
+uint8_t max_bright = 128;
+CRGB leds[NUM_LEDS];
+const int sensorPin = A0;  // Pressure sensor connected to analogue pin A0
+
+void setup() {
+  Serial.begin(9600); 
+  LEDS.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
+  FastLED.setBrightness(max_bright);
+  pinMode(sensorPin, INPUT); // Setting the pressure sensor pin to input mode
+}
+
+void loop() {
+  int sensorValue = analogRead(sensorPin); // Reading the analogue values of the sensors
+  Serial.print("Sensor Value: ");
+  Serial.println(sensorValue); // Output sensor readings to serial monitor
+  
+  if (sensorValue < 200) {
+    // Light ring illuminates when the sensor reading is less than 200
+     fill_gradient_RGB(leds, 0,CRGB::Blue, 11, CRGB::Green);
+ // Light ring all lit up in white
+  } else {
+    // When the sensor reading is greater than or equal to 800, the light ring goes out
+    fill_solid(leds, NUM_LEDS, CRGB::Black); // All light rings are extinguished
+  }
+
+  FastLED.show();
+  delay(100); 
+}
+```
