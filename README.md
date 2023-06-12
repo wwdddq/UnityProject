@@ -21,13 +21,16 @@ In a mysterious space station, scientists have conducted a ground-breaking exper
 
 ## What I did
 ### Modelling in Cinema4D
+Building scene models using C4D
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/%E6%88%AA%E5%B1%8F2023-06-12%2001.38.11.png)
 
 ### Unity-Build, lighting, particle systems, animation
+Build a scene in unity, add light sources and a particle system to create a cloud floating effect. There are also simple orbital rotations of planets and spaceships.
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/building.png)
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/animation.png)
 
 ### Unity-UI
+Creation of the game's opening UI, and the UI screens for each level's LOSE and WIN.
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/UI.jpg)
 ![UnityProject](https://github.com/wwdddq/UnityProject/blob/main/image/ui.png)
 ```ruby
@@ -67,6 +70,7 @@ public class StartUi : MonoBehaviour
 ```
 
 ### Unity-Sound
+Add sound settings adjustment panel.
 ```ruby
 using System.Collections;
 using System.Collections.Generic;
@@ -303,3 +307,8 @@ public class WinObject : MonoBehaviour
     }
     ```
 }
+
+## Conclusion and Reflection
+I have learnt the basics of how to make games using Unity, but I think I am still lacking in scripting and overall game logic, so I will continue to learn more about this later. In terms of Arduino, it was a big regret that the device I wanted to make didn't work out in the end, and I would like to try again later on.
+
+## 
