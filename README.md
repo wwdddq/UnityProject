@@ -305,8 +305,9 @@ public class WinObject : MonoBehaviour
         // Close the serial port
         serialPort.Close();
     }
-    ```
+    
 }
+```
 
 ## Conclusion and Reflection
 I have learnt the basics of how to make games using Unity, but I think I am still lacking in scripting and overall game logic, so I will continue to learn more about this later. In terms of Arduino, it was a big regret that the device I wanted to make didn't work out in the end, and I would like to try again later on.
